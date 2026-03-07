@@ -1,7 +1,7 @@
 import { prisma } from "@/app/lib/prisma";
 import { NextResponse } from "next/server";
 import { Task } from "@/app/generated/prisma/client";
-import { taskSchema } from "../../schemas/taskSchema";
+import { updateTaskSchema } from "../../schemas/taskSchema";
 import { ValidationError } from "yup";
 import { ApiResponse } from "@/app/api/apiResponse";
 
@@ -55,7 +55,7 @@ export async function PUT(request: Request, { params }: Segments) {
         const { 
             description, 
             complete,
-        } = await taskSchema.validate(await request.json())
+        } = await updateTaskSchema.validate(await request.json())
 
         const updatedTask = await prisma.task.update({
             where: { id },

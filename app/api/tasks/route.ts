@@ -2,7 +2,7 @@
 import { prisma } from "@/app/lib/prisma";
 import { NextResponse } from "next/server";
 import { ValidationError } from "yup";
-import { taskSchema } from "../schemas/taskSchema";
+import { createTaskSchema } from "../schemas/taskSchema";
 
 export async function GET(request: Request) {
 
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
         const { 
             description, 
             complete,
-        } = await taskSchema.validate(await request.json())
+        } = await createTaskSchema.validate(await request.json())
         const task = await prisma.task.create({ 
             data: {
                 description, 
