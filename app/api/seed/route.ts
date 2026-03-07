@@ -14,7 +14,6 @@ export async function GET() {
             { description: "I don't trust people who don't love themselves and tell me, 'I love you.' There is an African saying: Be careful when a naked person offers you a shirt." },
             { description: "The time is yours. Do what you want with it." },
             { description: "You're only as good as your last envelope." },
-            { description: "I'm not gonna die in here. I'm gonna walk out of here." },
             { description: "You think I'm stupid? I'm smarter than you think." },
             { description: "You can't be afraid to take a big step. You can't be afraid to fall." },
             { description: "I always tell the truth. Even when I lie." },
