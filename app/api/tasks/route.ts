@@ -1,6 +1,7 @@
 
 import { prisma } from "@/app/lib/prisma";
 import { NextResponse } from "next/server";
+import { boolean, object, string, ValidationError } from "yup";
 
 export async function GET(request: Request) {
 
@@ -30,4 +31,34 @@ export async function GET(request: Request) {
     return NextResponse.json({
         tasks,
     })
+}
+
+const postSchema = object({
+    description: string().required().max(300).min(2),
+    complete: boolean().optional().default(false),
+})
+
+export async function POST(request: Request) {
+    try {
+        const { 
+            description, 
+            complete,
+        } = await postSchema.validate(await request.json())
+        const task = await prisma.task.create({ 
+            data: {
+                description, 
+                complete
+            },
+        })
+        return NextResponse.json(task)
+    }
+    catch (e) {
+        if (e instanceof ValidationError) {
+            return NextResponse.json(
+                { message: e.errors, },
+                { status: 400, }
+            )
+        }
+        return NextResponse.json({ status: 500, })   
+    }
 }
