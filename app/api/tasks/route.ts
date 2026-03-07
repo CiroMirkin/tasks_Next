@@ -12,15 +12,13 @@ export async function GET(request: Request) {
 
     if(isNaN(take)) {
         return NextResponse.json(
-            { message: 'Take debe ser un numero.', },
-            { status: 400, },
+            { message: 'Take debe ser un numero.', status: 400, },
         )
     }
 
     if(isNaN(skip)) {
         return NextResponse.json(
-            { message: 'Skip debe ser un numero.', },
-            { status: 400, },
+            { message: 'Skip debe ser un numero.', status: 400, },
         )
     }
 
@@ -51,8 +49,7 @@ export async function POST(request: Request) {
     catch (e) {
         if (e instanceof ValidationError) {
             return NextResponse.json(
-                { message: e.errors, },
-                { status: 400, }
+                { message: e.errors, status: 400, }
             )
         }
         return NextResponse.json({ status: 500, })   
