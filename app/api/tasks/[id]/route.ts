@@ -3,12 +3,17 @@ import { NextResponse } from "next/server";
 import { Task } from "@/app/generated/prisma/client";
 import { taskSchema } from "../../schemas/taskSchema";
 import { ValidationError } from "yup";
+import { ApiResponse } from "@/app/api/apiResponse";
 
 interface Segments {
     params: Promise<{ id: string }>
 }
 
-const getTaskById = async ({ id }: { id: string}): Promise<{ message: string, status: number, task: Task | null }> => {
+interface TaskResponse extends ApiResponse {
+    task: Task | null
+}
+
+const getTaskById = async ({ id }: { id: string}): Promise<TaskResponse>  => {
     const task = await prisma.task.findUnique({
         where: {
             id,
