@@ -1,7 +1,8 @@
 
 import { prisma } from "@/app/lib/prisma";
 import { NextResponse } from "next/server";
-import { boolean, object, string, ValidationError } from "yup";
+import { ValidationError } from "yup";
+import { taskSchema } from "../schemas/taskSchema";
 
 export async function GET(request: Request) {
 
@@ -33,17 +34,12 @@ export async function GET(request: Request) {
     })
 }
 
-const postSchema = object({
-    description: string().required().max(300).min(2),
-    complete: boolean().optional().default(false),
-})
-
 export async function POST(request: Request) {
     try {
         const { 
             description, 
             complete,
-        } = await postSchema.validate(await request.json())
+        } = await taskSchema.validate(await request.json())
         const task = await prisma.task.create({ 
             data: {
                 description, 
