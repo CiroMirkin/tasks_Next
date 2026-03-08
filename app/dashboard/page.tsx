@@ -1,5 +1,6 @@
 import { prisma } from "@/app/lib/prisma"
 import { TaskList } from "./components/TaskList"
+import { CreateTask } from "./components/CreateTask"
 
 export default async function Dashboard() {
 
@@ -10,8 +11,9 @@ export default async function Dashboard() {
   })
 
   return (
-    <>
+    <main>
+      <CreateTask />
       <TaskList tasks={tasks} />
-    </>
+    </main>
   )
 }
