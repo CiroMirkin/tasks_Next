@@ -23,3 +23,13 @@ export const createTask = async (description: string): Promise<Task> => {
     }).then(res => res.json())
     return task
 }
+
+export const deleteCompletedTasks = async (): Promise<Task[]|void> => {
+    const deletedTasks = await fetch(`/api/tasks/completed`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json())
+    return deletedTasks
+}
