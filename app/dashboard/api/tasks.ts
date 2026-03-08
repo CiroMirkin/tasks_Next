@@ -11,3 +11,15 @@ export const updateTask = async (id: string, complete: boolean): Promise<Task> =
     }).then(res => res.json())
     return task
 }
+
+export const createTask = async (description: string): Promise<Task> => {
+    const body = { description }
+    const task = await fetch(`/api/tasks`, {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json())
+    return task
+}
