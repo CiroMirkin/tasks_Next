@@ -1,6 +1,6 @@
 "use client"
 
-import { createTaskSchema } from "@/app/api/schemas/taskSchema"
+import { createTaskSchema } from "@/app/schemas/taskSchema"
 import { Button } from "@/components/ui/button"
 import {
   Field,
