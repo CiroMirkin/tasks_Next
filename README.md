@@ -1,6 +1,6 @@
-# API REST de Tareas
+# CRUD de Tareas
 
-API REST para gestión de tareas desarrollada con Next.js 16, Prisma y PostgreSQL.
+CRUD para gestión de tareas desarrollada con Next.js 16, Prisma y PostgreSQL.
 
 ## Características
 
@@ -9,6 +9,13 @@ API REST para gestión de tareas desarrollada con Next.js 16, Prisma y PostgreSQ
 - Validación de datos con Yup
 - Tipado con TypeScript
 - Base de datos PostgreSQL con Prisma ORM
+
+## Características de Next.js
+
+- **App Router**: Uso del directorio `app/`.
+- **Server Actions**: Funciones server-side con `"use server"` para mutaciones de datos.
+- **Revalidación de caché**: `revalidatePath('/dashboard')` para actualizar datos en tiempo real.
+- **API Routes**: Endpoints en `app/api/seed/route.ts`.
 
 ## Instalación
 
