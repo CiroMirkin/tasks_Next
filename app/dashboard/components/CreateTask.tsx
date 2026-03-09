@@ -12,21 +12,18 @@ import {
 import { Input } from "@/components/ui/input"
 import { PlusIcon } from "lucide-react"
 import { SubmitEvent, useState } from "react"
-import * as tasksApi from '@/app/dashboard/api/tasks'
-import { useRouter } from "next/navigation"
 import { ValidationError } from "yup"
+import { createTask } from "../actions/task-actions"
 
 export function CreateTask() {
-    const router = useRouter()
     const [ text, setText ]= useState('')
 
     const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
         try {
             e.preventDefault()
             const { description } = await createTaskSchema.validate({ description: text })
-            await tasksApi.createTask(description)
+            createTask({ description })
             setText('')
-            router.refresh()
         } catch (e) {
             const error = e as ValidationError
             console.error(error)
