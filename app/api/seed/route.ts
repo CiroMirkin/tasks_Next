@@ -1,7 +1,7 @@
 import { prisma } from "@/app/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function GET() {
+export async function POST() {
     
     await prisma.task.deleteMany() // delete * from Task
 
