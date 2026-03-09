@@ -34,3 +34,17 @@ export const createTask = async (newTask: { description: string, complete?: bool
         return e
     }
 }
+
+export const deleteCompletedTasks = async () => {
+    const deletedTasks = await prisma.task.deleteMany({
+        where: {
+            complete: true
+        }
+    })
+
+    if(!deletedTasks) {
+        throw "No se encontraron tareas completadas."
+    }
+
+    revalidatePath('/dashboard')
+}
