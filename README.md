@@ -41,6 +41,6 @@ Ver [docs/api.md](docs/api.md) para referencia completa de endpoints.
 
 ## Referencias
 
-https://nextjs.org/docs/app/api-reference/file-conventions/route
-https://vercel.com/kb/guide/nextjs-prisma-postgres
-https://www.prisma.io/docs/orm
+* https://nextjs.org/docs/app/getting-started/updating-data
+* https://vercel.com/kb/guide/nextjs-prisma-postgres
+* https://www.prisma.io/docs/orm
