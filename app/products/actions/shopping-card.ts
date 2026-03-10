@@ -35,3 +35,11 @@ export const deleteProductFromCart = async (id: string) => {
     }
     await setCookie('cart', JSON.stringify(cookieCart))
 }
+
+export const deleteSingleItemFromCart = async (id: string) => {
+    const cookieCart = await getCookieCart()
+    if(!cookieCart[id]) return
+    
+    cookieCart[id] = cookieCart[id]-=1
+    await setCookie('cart', JSON.stringify(cookieCart))
+}
