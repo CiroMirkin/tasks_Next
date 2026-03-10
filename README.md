@@ -4,13 +4,16 @@ Una aplicación Fullstack utilizando Next.js y una base de datos PostgreSQL con 
 
 ## Características
 
-* CRUD para gestión de tareas con persistencia de datos.
-    - CRUD completo de tareas.
+* Gestión de Tareas:
+    - CRUD completo de tareas con persistencia en PostgreSQL
     - Validación de datos con Yup.
 
-* Gestión de un carrito de compras.
-    - Carrito de compras con persistencia de cookies.
-    - Resumen de compra con totales.
+* Carrito de Compras:
+    - Agregar productos al carrito.
+    - Eliminar productos del carrito.
+    - Eliminar unidades individuales.
+    - Persistencia mediante cookies.
+    - Resumen de compra con totales (subtotal, cantidad de items).
 
 ## Características de Next.js
 
