@@ -1,18 +1,21 @@
-# CRUD de Tareas
+# Practica de conceptos de Next.js
 
-CRUD para gestión de tareas desarrollada con Next.js 16, Prisma y PostgreSQL.
+Una aplicación Fullstack utilizando Next.js y una base de datos PostgreSQL con Prisma ORM.
 
 ## Características
 
-- CRUD completo de tareas
-- Pagination en listados
-- Validación de datos con Yup
-- Tipado con TypeScript
-- Base de datos PostgreSQL con Prisma ORM
+* CRUD para gestión de tareas con persistencia de datos.
+    - CRUD completo de tareas.
+    - Validación de datos con Yup.
+
+* Gestión de un carrito de compras.
+    - Carrito de compras con persistencia de cookies.
+    - Resumen de compra con totales.
 
 ## Características de Next.js
 
 - **App Router**: Uso del directorio `app/`.
+- **Cookies**: Uso de cookies del lado del servidor y del lado del cliente.
 - **Server Actions**: Funciones server-side con `"use server"` para mutaciones de datos.
 - **Revalidación de caché**: `revalidatePath('/dashboard')` para actualizar datos en tiempo real.
 - **API Routes**: Endpoints en `app/api/seed/route.ts`.
