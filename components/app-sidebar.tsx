@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 
 import { SearchForm } from "@/components/search-form"
@@ -13,7 +15,8 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { Clipboard, Home } from "lucide-react"
+import { Clipboard, Home, Store } from "lucide-react"
+import { usePathname } from "next/navigation"
 
 const data = {
   navMain: [
@@ -28,14 +31,21 @@ const data = {
         },
         {
           title: "Tasks Admin",
-          url: "dashboard",
+          url: "/dashboard",
           icon: <Clipboard />,
+        },
+        {
+          title: "Products",
+          url: "/products",
+          icon: <Store />,
         },
       ],
     },
   ]
 }
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const pathname = usePathname()
+
   return (
     <Sidebar {...props}>
       <SidebarHeader className="">
@@ -51,7 +61,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
-                     /*  isActive={} */
+                      isActive={pathname === item.url}
                       render={<a href={item.url} />}
                     >
                       {item.icon}
