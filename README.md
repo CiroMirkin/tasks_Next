@@ -57,3 +57,6 @@ Ver [docs/api.md](docs/api.md) para referencia completa de endpoints.
 * https://nextjs.org/docs/app/getting-started/updating-data
 * https://vercel.com/kb/guide/nextjs-prisma-postgres
 * https://www.prisma.io/docs/orm
+* https://www.npmjs.com/package/yup
+* https://nextjs.org/docs/app/api-reference/functions/cookies
+* https://www.npmjs.com/package/cookies-next
