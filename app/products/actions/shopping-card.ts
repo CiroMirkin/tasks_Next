@@ -4,7 +4,7 @@ import { getCookie, hasCookie, setCookie } from "cookies-next"
 
 /* ID: Amount */
 
-interface Cart {
+export interface Cart {
     [ id:string ]: number
 }
 
