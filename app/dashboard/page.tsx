@@ -1,7 +1,6 @@
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
-import { prisma } from "@/app/lib/prisma"
 import { TaskList } from "./components/TaskList"
 import { CreateTask } from "./components/CreateTask"
 import { DeleteCompletedTasks } from "./components/DeleteCompletedTasks"
@@ -16,17 +15,11 @@ export default async function Dashboard() {
     redirect('/api/auth/signin')
   }
 
-  const tasks = await prisma.task.findMany({
-    orderBy: {
-      description: 'asc',
-    },
-  })
-
   return (
     <main>
       <CreateTask />
       <DeleteCompletedTasks />
-      <TaskList tasks={tasks} />
+      <TaskList />
     </main>
   )
 }
