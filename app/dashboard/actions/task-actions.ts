@@ -1,6 +1,7 @@
 "use server"
 
 import { prisma } from "@/app/lib/prisma"
+import { getUserServerSession } from "@/auth/actions/auth-actions"
 import { revalidatePath } from "next/cache"
 import { ValidationError } from "yup"
 
@@ -22,7 +23,8 @@ export const toggleTask = async (id: string, complete: boolean) => {
 
 export const createTask = async (newTask: { description: string, complete?: boolean }) => {
     try {
-        const task = await prisma.task.create({ data: newTask, })
+        const user = await getUserServerSession()
+        const task = await prisma.task.create({ data: {...newTask, userId: user!.id}, })
         revalidatePath('/dashboard')
         return task
     }
@@ -36,9 +38,11 @@ export const createTask = async (newTask: { description: string, complete?: bool
 }
 
 export const deleteCompletedTasks = async () => {
+    const user = await getUserServerSession()
     const deletedTasks = await prisma.task.deleteMany({
         where: {
-            complete: true
+            complete: true,
+            userId: user!.id,
         }
     })
 

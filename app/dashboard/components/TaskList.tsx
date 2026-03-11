@@ -1,13 +1,16 @@
-"use client"
-
-import { Task } from "@/app/generated/prisma/client"
+import { prisma } from "@/app/lib/prisma"
 import { TaskItem } from "./TaskItem"
+import { getUserServerSession } from "@/auth/actions/auth-actions"
 
-interface Props {
-    tasks?: Task[]
-}
-
-export function TaskList({ tasks = [] }: Props) {
+export async function TaskList() {
+    const user = await getUserServerSession()
+    const tasks = await prisma.task.findMany({
+        where: { userId: user!.id },
+        orderBy: {
+          description: 'asc',
+        },
+    })
+    
     return (
         <ul className="flex gap-4 flex-wrap">
             {tasks.map(task => (
