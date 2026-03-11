@@ -2,10 +2,17 @@
 
 Una aplicación Fullstack utilizando Next.js y una base de datos PostgreSQL con Prisma ORM.
 
+**Usuario de prueba:**
+* Email: `test@testing.com`
+* Contraseña: `123456`
+
 ## Características
 
+* Autenticación de usuarios.
+
 * Gestión de Tareas:
-    - CRUD completo de tareas con persistencia en PostgreSQL
+    - CRUD completo de tareas con persistencia en PostgreSQL.
+    - Tareas asociadas al usuario autenticado.
     - Validación de datos con Yup.
 
 * Carrito de Compras:
@@ -22,6 +29,15 @@ Una aplicación Fullstack utilizando Next.js y una base de datos PostgreSQL con 
 - **Server Actions**: Funciones server-side con `"use server"` para mutaciones de datos.
 - **Revalidación de caché**: `revalidatePath('/dashboard')` para actualizar datos en tiempo real.
 - **API Routes**: Endpoints en `app/api/seed/route.ts`.
+
+## Autenticación (NextAuth.js)
+
+- Proveedor GitHub.
+- Credenciales personalizadas con email y contraseña.
+- Encriptación de contraseña con `bcryptjs`.
+- Relaciones de base de datos entre User y Task.
+- Sesión de usuario con roles (admin, client, tester).
+- Validación de usuario activo.
 
 ## Instalación
 
@@ -54,9 +70,9 @@ Ver [docs/api.md](docs/api.md) para referencia completa de endpoints.
 
 ## Referencias
 
-* https://nextjs.org/docs/app/getting-started/updating-data
-* https://vercel.com/kb/guide/nextjs-prisma-postgres
-* https://www.prisma.io/docs/orm
-* https://www.npmjs.com/package/yup
-* https://nextjs.org/docs/app/api-reference/functions/cookies
-* https://www.npmjs.com/package/cookies-next
+* [Prisma, Postgres y Next.js](https://vercel.com/kb/guide/nextjs-prisma-postgres)
+* [Prisma ORM](https://www.prisma.io/docs/orm)
+* [Yup](https://www.npmjs.com/package/yup)
+* [Next.js Cookies](https://nextjs.org/docs/app/api-reference/functions/cookies)
+* [Cookies-Next Client](https://www.npmjs.com/package/cookies-next)
+* [NextAuth.js (Auth.js)](https://next-auth.js.org/getting-started/example)
