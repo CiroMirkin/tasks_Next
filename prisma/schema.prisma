@@ -30,6 +30,7 @@ model User {
   emailVerified DateTime?
   image         String?
 
+  password      String?
   roles String[] @default(["client"])
   isActive Boolean @default(true)
 
