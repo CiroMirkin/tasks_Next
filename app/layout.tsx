@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/sidebar";
 import { cn } from "@/lib/utils";
+import AuthProvider from "@/auth/components/AuthProvider";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -19,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("font-sans", inter.variable)}>
       <body>
-        <Sidebar>
-          {children}
-        </Sidebar>
+        <AuthProvider>
+          <Sidebar>
+            {children}
+          </Sidebar>
+        </AuthProvider>
       </body>
     </html>
   );
