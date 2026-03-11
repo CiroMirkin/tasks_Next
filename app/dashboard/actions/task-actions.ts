@@ -38,9 +38,11 @@ export const createTask = async (newTask: { description: string, complete?: bool
 }
 
 export const deleteCompletedTasks = async () => {
+    const user = await getUserServerSession()
     const deletedTasks = await prisma.task.deleteMany({
         where: {
-            complete: true
+            complete: true,
+            userId: user!.id,
         }
     })
 
