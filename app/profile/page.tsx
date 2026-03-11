@@ -13,6 +13,7 @@ export default function Profile() {
     const image = session?.user?.image || ''
     const name = session?.user?.name || 'No Name'
     const email = session?.user?.email || ''
+    const roles = session?.user?.roles || ''
     
     return (
         <main className="w-full px-6 py-4">
@@ -23,6 +24,7 @@ export default function Profile() {
                 <div>
                     <h1 className="text-3xl font-semibold capitalize">{name}</h1>
                     <p className="text-base opacity-70">{email}</p>
+                    <p>{roles && roles.join(' - ')}</p>
                 </div>
             </header>
         </main>
